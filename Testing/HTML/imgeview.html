@@ -1,0 +1,46 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+    
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<script>
+        var videoUrl = 'http://www.vimeo.com/__VimeoVideoId__';
+        var endpoint = 'http://www.vimeo.com/api/oembed.json';
+        var callback = 'embedVideo';
+        var url = endpoint + '?url=' + encodeURIComponent(videoUrl) + '&callback=' + callback + '&width=640';
+        
+        function embedVideo(video) {
+            document.getElementById('video').innerHTML = unescape(video.html);
+        }
+
+        function init() {
+            var js = document.createElement('script');
+            js.setAttribute('type', 'text/javascript');
+            js.setAttribute('src', url);
+            document.getElementsByTagName('head').item(0).appendChild(js);
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+	<h3 class="title">
+		__ImageTitle__
+	</h3>
+    <br>
+	<a href="__ImageSrcURL__">
+		<span>Image Link</span>
+	</a>
+	<img src="__ImageSrcLocalURL__"/>
+
+    <br>
+    <br>
+    
+	<div id="video">
+		Loading video...
+	</div>
+
+</body>
+
+</html>
